@@ -60,14 +60,14 @@ export default function createClient(requestOptions) {
     return uid.join('');
   }
 
-  function getAccessTokenForDevice(device) {
+  function getAccessTokenForDevice(device, location = defaultLocation) {
     return post({
       endpoint: '/users',
       headers,
       body: {
         device_uid: device,
         client_id: '81e8a76e-1e02-4d17-9ba0-8a7020261b26',
-        location: defaultLocation
+        location
       }
     }).then(body => body.access_token);
   }
@@ -102,7 +102,7 @@ export default function createClient(requestOptions) {
     });
   }
 
-  function createPost(token, message, ancestor) {
+  function createPost(token, message, ancestor, location = defaultLocation) {
     return post({
       endpoint: '/posts',
       headers: {
@@ -111,7 +111,7 @@ export default function createClient(requestOptions) {
       },
       body: {
         color: 'FF0000',
-        location: defaultLocation,
+        location,
         message,
         ancestor
       }
