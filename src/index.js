@@ -40,7 +40,7 @@ export default function createClient(requestOptions) {
         }, (err, res) => {
           if (err) return reject(err);
           if (res.statusCode >= 400) return reject(createError(res));
-          return resolve(JSON.parse(res.body));
+          return resolve(JSON.parse(res.body || '{}'));
         });
       });
   }
