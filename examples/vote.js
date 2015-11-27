@@ -1,5 +1,7 @@
 import parseArgs from 'minimist';
-import { getAccessTokenForNewDevice, upvote, downvote } from '../';
+import createClient from '../';
+
+const jodel = createClient();
 
 /**
  * Parse them command line args
@@ -7,7 +9,7 @@ import { getAccessTokenForNewDevice, upvote, downvote } from '../';
 const argv = parseArgs(process.argv.slice(2));
 
 function help(msg = '') {
-  console.log(`Usage: vote up {post-id} [--no-tor]\n\n${msg}`);
+  console.log(`Usage: vote up {post-id}\n\n${msg}`);
   process.exit(1);
 }
 
@@ -16,8 +18,8 @@ function help(msg = '') {
  */
 let vote;
 switch (argv._[0]) {
-  case 'up': vote = upvote; break;
-  case 'down': vote = downvote; break;
+  case 'up': vote = jodel.upvote; break;
+  case 'down': vote = jodel.downvote; break;
   default: help();
 }
 
@@ -30,7 +32,7 @@ if (!postId) {
   help('post-id is required');
 }
 
-getAccessTokenForNewDevice()
+jodel.getAccessTokenForNewDevice()
   .then(token => vote(token, postId))
   .then(res => console.log(res))
   .catch(err => console.error('Error: ', err));

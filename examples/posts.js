@@ -1,6 +1,7 @@
 import parseArgs from 'minimist';
-import { newest, popular, discussed, mine } from '../';
+import createClient from '../';
 
+const jodel = createClient();
 
 /**
  * Parse them command line args
@@ -8,7 +9,7 @@ import { newest, popular, discussed, mine } from '../';
 const argv = parseArgs(process.argv.slice(2));
 
 function help(msg = '') {
-  console.log(`Usage: posts (newest|popular|discussed|mine) [--geojson --device=1234]\n\n${msg}`);
+  console.log(`Usage: posts (newest|popular|discussed|mine) [--geojson --token=]\n\n${msg}`);
   process.exit(1);
 }
 
@@ -22,10 +23,10 @@ if (!accessToken) {
 
 let filter;
 switch (argv._[0]) {
-  case 'newest': filter = newest; break;
-  case 'popular': filter = popular; break;
-  case 'discussed': filter = discussed; break;
-  case 'mine': filter = mine; break;
+  case 'newest': filter = jodel.newest; break;
+  case 'popular': filter = jodel.popular; break;
+  case 'discussed': filter = jodel.discussed; break;
+  case 'mine': filter = jodel.mine; break;
   default: help();
 }
 

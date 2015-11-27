@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "description": "",
   "main": "src/index.js",
-  "devDependencies": {
-    "babel": "5.8.29",
-    "minimist": "1.2.0",
+  "dependencies": {
     "request": "2.67.0",
-    "socks5-https-client": "1.1.2"
+    "babel": "5.8.29"
+  },
+  "devDependencies": {
+    "minimist": "1.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
