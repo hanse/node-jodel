@@ -1,6 +1,6 @@
 {
   "name": "jodel",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "jodel client",
   "main": "src/index.js",
   "dependencies": {
