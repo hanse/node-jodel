@@ -3,12 +3,22 @@
   "version": "0.3.0",
   "description": "jodel client",
   "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hanse/node-jodel"
+  },
+  "keywords": [
+    "jodel"
+  ],
   "dependencies": {
     "request": "2.67.0",
     "babel": "5.8.29"
   },
   "devDependencies": {
     "minimist": "1.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/Hanse/node-jodel/issues"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
